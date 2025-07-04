@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btnParent">
+    <button id="btn" onclick="onclick1()">Count 0</button>
+    </div>
+<script>
+
+let state={
+    count:0
+}
+
+function onclick1(){
+    state.count++;
+    btnRerender();
+}
+
+function btnRerender(){
+    //append karega parent me 
+    console.log("inside btRedenter")
+    const parent=document.getElementById("btnParent")
+    parent.innerHTML="";
+    const element= btnComponent(state.count);
+    parent.appendChild(element);
+}
+
+function btnComponent(count){
+    //btn change karega
+    console.log("inside btnCOmponent");
+    const btn=document.createElement("button");
+    btn.innerHTML=`Counter ${count}`;
+    btn.setAttribute("onclick",`onclick1()`);
+    return btn;
+    
+}
+btnRerender();
+
+
+
+</script>
+</body>
+
+</html>
